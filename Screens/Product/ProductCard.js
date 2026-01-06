@@ -8,7 +8,7 @@ import {
     Button
 } from 'react-native'
 
-var { width } = Dimensions.get("window");
+var { width, height } = Dimensions.get("window");
 
 const ProductCard = (props) => {
     const { name, price, image, countInStock } = props;

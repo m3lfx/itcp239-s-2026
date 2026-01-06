@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, FlatList, ActivityIndicator, Dimensions } from 'react-native'
+import { Surface, Text, TextInput, Searchbar } from 'react-native-paper';
+import { Ionicons } from "@expo/vector-icons";
 import ProductList from './ProductList'
-const data = require('../../assets/data/products.json')
 
+
+const data = require('../../assets/data/products.json')
+var { height, width } = Dimensions.get('window')
 const ProductContainer = () => {
 
     const [products, setProducts] = useState([])
@@ -16,21 +20,42 @@ const ProductContainer = () => {
     }, [])
 
     return (
-        <View>
-            <Text>Product Container</Text>
-            <View style={{ marginTop: 200 }} >
-                <FlatList
+        <Surface width="100%" style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-                    columnWrapperStyle={{ justifyContent: 'space-between' }}
-                    numColumns={2}
-                    data={products}
+            <Text variant="displaySmall">Search</Text>
+            <FlatList
 
-                    renderItem={({ item }) => <ProductList key={item.id} item={item} />}
-                    keyExtractor={item => item.name}
-                />
-            </View>
-        </View>
+                columnWrapperStyle={{ justifyContent: 'space-between' }}
+                numColumns={2}
+                data={products}
+
+                renderItem={({ item }) => <ProductList key={item.id} item={item} />}
+                keyExtractor={item => item.name}
+            />
+
+
+
+        </Surface>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexWrap: "wrap",
+        backgroundColor: "gainsboro",
+    },
+    listContainer: {
+        height: height,
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "flex-start",
+        flexWrap: "wrap",
+        backgroundColor: "gainsboro",
+    },
+    center: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});
 
 export default ProductContainer;
