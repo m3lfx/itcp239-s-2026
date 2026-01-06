@@ -5,9 +5,11 @@ import { Ionicons } from "@expo/vector-icons";
 import ProductList from './ProductList'
 import SearchedProduct from "./SearchedProduct";
 import Banner from "../../Shared/Banner";
+import CategoryFilter from "./CategoryFilter";
 
 
 const data = require('../../assets/data/products.json')
+const productCategories = require('../../assets/data/categories.json')
 var { height, width } = Dimensions.get('window')
 const ProductContainer = () => {
 
@@ -22,9 +24,20 @@ const ProductContainer = () => {
 
     useEffect(() => {
         setProducts(data);
+        setProductsFiltered(data);
+        setFocus(false);
+        setCategories(productCategories)
+        setActive(-1)
+        setInitialState(data);
+        setProductsCtg(data)
 
         return () => {
             setProducts([])
+            setProductsFiltered([]);
+            setFocus();
+            setCategories([])
+            setActive()
+            setInitialState();
         }
     }, [])
 
@@ -40,6 +53,19 @@ const ProductContainer = () => {
     const onBlur = () => {
         setFocus(false);
     }
+
+    const changeCtg = (ctg) => {
+        {
+            ctg === "all"
+                ? [setProductsCtg(initialState), setActive(true)]
+                : [
+                    setProductsCtg(
+                        products.filter((i) => i.category.$oid === ctg),
+                        setActive(true)
+                    ),
+                ];
+        }
+    };
 
     return (
         <Surface width="100%" style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -58,11 +84,37 @@ const ProductContainer = () => {
                 />
             ) : (
 
-                <View style={styles.listContainer} >
+                <ScrollView>
                     <View>
                         <Banner />
                     </View>
-                </View>
+                    <View >
+                        <CategoryFilter
+                            categories={categories}
+                            categoryFilter={changeCtg}
+                            productsCtg={productsCtg}
+                            active={active}
+                            setActive={setActive}
+                        />
+                    </View>
+                    {productsCtg.length > 0 ? (
+                        <View style={styles.listContainer}>
+                            {productsCtg.map((item) => {
+                                return (
+                                    <ProductList
+
+                                        key={item.id}
+                                        item={item}
+                                    />
+                                )
+                            })}
+                        </View>
+                    ) : (
+                        <View style={[styles.center, { height: height / 2 }]}>
+                            <Text>No products found</Text>
+                        </View>
+                    )}
+                </ScrollView>
 
 
 
