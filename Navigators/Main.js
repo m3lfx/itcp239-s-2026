@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import CartNavigator from "./CartNavigator";
 import CartIcon from "../Shared/CartIcon";
 import UserNavigator from "./UserNavigator";
-
+import AdminNavigator from "./AdminNavigator";
 const Tab = createBottomTabNavigator();
 
 const Main = () => {
@@ -60,7 +60,7 @@ const Main = () => {
 
             <Tab.Screen
                 name="Admin"
-                component={HomeNavigator}
+                component={AdminNavigator}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color }) => {
