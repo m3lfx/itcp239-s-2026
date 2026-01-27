@@ -7,14 +7,14 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux'
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from 'axios';
-// import baseURL from '../../../assets/common/baseurl';
-// import AuthGlobal from '../../../Context/Store/AuthGlobal';
+import baseURL from '../../assets/common/baseurl';
+import AuthGlobal from '../../Context/Store/AuthGlobal';
 var { width, height } = Dimensions.get("window");
 import Toast from 'react-native-toast-message';
 import { clearCart } from '../../Redux/Actions/cartActions';
 const Confirm = (props) => {
-    // const context = useContext(AuthGlobal)
-    // const [token, setToken] = useState();
+    const context = useContext(AuthGlobal)
+    const [token, setToken] = useState();
     // const confirm = props.route.params;
     const finalOrder = props.route.params;
     console.log("order", finalOrder)

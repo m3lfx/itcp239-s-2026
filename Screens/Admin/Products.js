@@ -123,7 +123,7 @@ const Products = (props) => {
                 <EasyButton
                     secondary
                     medium
-                // onPress={() => navigation.navigate("Orders")}
+                    onPress={() => navigation.navigate("Orders")}
                 >
                     <Ionicons name="bag-outline" size={18} color="white" />
                     <Text style={styles.buttonText}>Orders</Text>
