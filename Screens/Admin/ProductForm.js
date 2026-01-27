@@ -14,7 +14,7 @@ import FormContainer from "../../Shared/FormContainer"
 import Input from "../../Shared/Input"
 import EasyButton from "../../Shared/StyledComponents/EasyButton"
 
-import Icon from "react-native-vector-icons/FontAwesome"
+
 import Toast from "react-native-toast-message"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import baseURL from "../../assets/common/baseurl"
@@ -23,6 +23,7 @@ import axios from "axios"
 import * as ImagePicker from "expo-image-picker"
 import { useFocusEffect, useNavigation } from "@react-navigation/native"
 import mime from "mime";
+import { Ionicons } from "@expo/vector-icons";
 
 
 const ProductForm = (props) => {
@@ -202,7 +203,7 @@ const ProductForm = (props) => {
                 <TouchableOpacity
                     onPress={pickImage}
                     style={styles.imagePicker}>
-                    <Icon style={{ color: "white" }} name="camera" />
+                    <Ionicons style={{ color: "white" }} name="camera" />
                 </TouchableOpacity>
             </View>
             <View style={styles.label}>

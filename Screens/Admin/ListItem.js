@@ -58,9 +58,9 @@ const ListItem = ({ item, index, deleteProduct }) => {
                         <EasyButton
                             medium
                             secondary
-                            // onPress={() => [navigation.navigate("ProductForm", { item }),
-                            // setModalVisible(false)
-                            // ]}
+                            onPress={() => [navigation.navigate("ProductForm", { item }),
+                            setModalVisible(false)
+                            ]}
                             title="Edit"
                         >
                             <Text style={styles.textStyle}>Edit</Text>
@@ -68,9 +68,9 @@ const ListItem = ({ item, index, deleteProduct }) => {
                         <EasyButton
                             medium
                             danger
-                            // onPress={() => [
-                            //     deleteProduct(item.id),
-                            //     setModalVisible(false)]}
+                            onPress={() => [
+                                deleteProduct(item.id),
+                                setModalVisible(false)]}
                             title="delete"
                         >
                             <Text style={styles.textStyle}>Delete</Text>

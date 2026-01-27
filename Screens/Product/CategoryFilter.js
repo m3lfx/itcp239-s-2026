@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, ScrollView, FlatList, View, Text } from 'react-native';
-
+import { useFocusEffect } from '@react-navigation/native';
 import { Badge, } from 'react-native-paper';
 
 const CategoryFilter = (props) => {
@@ -26,9 +26,9 @@ const CategoryFilter = (props) => {
                 </TouchableOpacity>
                 {props.categories.map((item) => (
                     <TouchableOpacity
-                        key={item._id.$oid}
+                        key={item._id}
                         onPress={() => {
-                            props.categoryFilter(item._id.$oid),
+                            props.categoryFilter(item._id),
                                 props.setActive(props.categories.indexOf(item))
                         }}
                     >
